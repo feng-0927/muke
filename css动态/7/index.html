@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+
+        input[name='image'],input[name='change']{
+            display: none;
+        }
+
+        body{
+            background:#ccc;
+        }
+
+        .wrapper{
+            width:640px;
+            height:420px;
+            margin:0 auto;
+            margin-top:100px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .img{
+            width:640px;
+            height:320px;
+            overflow: hidden;
+            position: absolute;
+            left:0;
+            top:0;
+            opacity: 0;
+            transition: all .5s ease-in-out;
+            transform:scale(1.5) rotate(360deg);
+            box-shadow: 0px 0px 3px 3px #000;
+        }
+        .img img{
+            width:100%;
+            height:100%;
+        }
+
+        .nav label{
+            position: absolute;
+            z-index:100;
+            width:100px;
+            height:320px;
+            line-height:320px;
+            text-align:center;
+            font-size:130px;
+            background:rgba(255,255,255,.5);
+            color: #000;
+            text-shadow: 0px 0px 10px black;
+            display: none;
+            opacity: 0;
+        }
+
+        .nav label:first-child{
+            left:0;
+        }
+
+        .nav label:last-child{
+            right:0;
+        }
+
+        input[name="image"]:checked + .item .img{
+            opacity: 1;
+            transform:scale(1) rotate(0deg);
+        }
+
+        input[name="image"]:checked + .item .nav label{
+            display: block;
+        }
+
+        .wrapper .item .img:hover + .nav label{
+            opacity: .8;
+        }
+
+        .nav label:hover{
+            opacity: 1;
+        }
+
+        /* list start */
+        .list{
+            position: absolute;
+            z-index:100;
+            width:100%;
+            bottom:82px;
+            opacity: 1;
+            transform:scale(0);
+            transition: all .5s ease-in-out;
+        }
+
+        .change_item{
+            display: flex;
+            width:100%;
+            justify-content:center;
+            position: absolute;
+            opacity: 0;
+            transform:scale(0);
+        }
+
+        .list .thumb{
+            flex-basis: 15%;
+            display: inline-block;
+            width:100px;
+            height:50px;
+            border:3px solid #999;
+            opacity: 0.6;
+            cursor: pointer;
+            transition: all .4s ease-in-out;
+            margin-right:15px;
+        }
+
+        .list label[for='img5']{
+            margin-right: 0px;
+        }
+
+        .list label img{
+            width:100%;
+            height:100%;
+        }
+
+        #img1:checked ~ .list label[for='img1'],#img2:checked ~ .list label[for='img2'],#img3:checked ~ .list label[for='img3'],#img4:checked ~ .list label[for='img4'],#img5:checked ~ .list label[for='img5']{
+            opacity: 1;
+        }
+
+
+        /* change start */
+        .change_nav label{
+            position: absolute;
+            width:25px;
+            text-align:center;
+            font-size:20px;
+            font-weight: bolder;
+            background:rgba(255,255,255,.2);
+            height:50px;
+            line-height:50px;
+            color:#000;
+            cursor: pointer;
+            display: none;
+            user-select: none;
+        }
+
+        .change_nav label:first-child{
+            left:0;
+        }
+
+        .change_nav label:last-child{
+            right:0;
+        }
+
+        input[name='change']:checked + .change_item{
+            opacity: 1;
+            transform:scale(1);
+        }
+
+        input[name='change']:checked + .change_item .change_nav label{
+            display: block;
+        }
+
+        .show{
+            position: absolute;
+            bottom: 0px;
+            text-align:center;
+            width:100%;
+        }
+
+        .show label{
+            display: inline-block;
+            cursor: pointer;
+        }
+
+
+        .show label::before{
+            content:"▲";
+        }
+
+
+        input[name='show']:checked + .list{
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        input[name='show']:checked ~ .show label{
+            transform:rotatex(180deg);
+        }   
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <input type="radio" name="image" id="img1" checked />
+        <div class="item">
+            <div class="img"><img src="./images/1.jpg" /></div>
+            <div class="nav">
+                <label for="img5">&lt;</label>
+                <label for="img2">&gt;</label>
+            </div>
+        </div>
+        <input type="radio" name="image" id="img2" />
+        <div class="item">
+            <div class="img"><img src="./images/2.jpg" /></div>
+            <div class="nav">
+                <label for="img1">&lt;</label>
+                <label for="img3">&gt;</label>
+            </div>
+        </div>
+        <input type="radio" name="image" id="img3" />
+        <div class="item">
+            <div class="img"><img src="./images/3.jpg" /></div>
+            <div class="nav">
+                <label for="img2">&lt;</label>
+                <label for="img4">&gt;</label>
+            </div>
+        </div>
+        <input type="radio" name="image" id="img4" />
+        <div class="item">
+            <div class="img"><img src="./images/4.jpg" /></div>
+            <div class="nav">
+                <label for="img3">&lt;</label>
+                <label for="img5">&gt;</label>
+            </div>
+        </div>
+        <input type="radio" name="image" id="img5" />
+        <div class="item">
+            <div class="img"><img src="./images/5.jpg" /></div>
+            <div class="nav">
+                <label for="img4">&lt;</label>
+                <label for="img1">&gt;</label>
+            </div>
+        </div>
+        <input type="checkbox" name="show" id="show" checked />
+        <div class="list">
+            <input type="radio" name="change" id="change1" checked />
+            <div class="change_item">
+                <label class="thumb" for="img1"><img src="./images/1.jpg"></label>
+                <label class="thumb" for="img2"><img src="./images/2.jpg"></label>
+                <label class="thumb" for="img3"><img src="./images/3.jpg"></label>
+                <label class="thumb" for="img4"><img src="./images/4.jpg"></label>
+                <label class="thumb" for="img5"><img src="./images/5.jpg"></label>
+                <div class="change_nav">
+                    <label for="change3">&lt;</label>
+                    <label for="change2">&gt;</label>
+                </div>
+            </div>
+            <input type="radio" name="change" id="change2" />
+            <div class="change_item">
+                <label class="thumb" for="img1"><img src="./images/bg11.jpg"></label>
+                <label class="thumb" for="img2"><img src="./images/bg22.jpg"></label>
+                <label class="thumb" for="img3"><img src="./images/bg33.jpg"></label>
+                <label class="thumb" for="img4"><img src="./images/bg44.jpg"></label>
+                <label class="thumb" for="img5"><img src="./images/bg11.jpg"></label>
+                <div class="change_nav">
+                    <label for="change1">&lt;</label>
+                    <label for="change3">&gt;</label>
+                </div>
+            </div>
+            <input type="radio" name="change" id="change3" />
+            <div class="change_item">
+                <label class="thumb" for="img1"><img src="./images/slide1.jpg"></label>
+                <label class="thumb" for="img2"><img src="./images/slide2.jpg"></label>
+                <label class="thumb" for="img3"><img src="./images/slide3.jpg"></label>
+                <label class="thumb" for="img4"><img src="./images/slide4.jpg"></label>
+                <label class="thumb" for="img5"><img src="./images/slide5.jpg"></label>
+                <div class="change_nav">
+                    <label for="change2">&lt;</label>
+                    <label for="change1">&gt;</label>
+                </div>
+            </div>
+            
+        </div>
+        <div style="clear:both;"></div>
+        <div class="show">
+            <label for="show"></label>
+        </div>
+
+    </div>
+</body>
+</html>

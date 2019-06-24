@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .fight{
+            position: relative;
+            width:600px;
+            margin:0 auto;
+        }
+
+        .demo{
+            position: absolute;
+            width:600px;
+            height:300px;
+            background-image:url('./img/huoying.png');
+            background-repeat: no-repeat;
+            background-position: 0px 0px;
+            background-size: 1920px;
+            z-index: 10;
+            animation:demo 2s infinite steps(16);
+        }
+
+        .test{
+            width:500px;
+            height:300px;
+            background-repeat: no-repeat;
+            background-image:url('./img/zuozhu.png');
+            background-position: 0px 0px;
+            background-size:2400px;
+            transform:rotateY(180deg);
+            position: absolute;
+            top: 190px;
+            left: 30px;
+            animation: test infinite 2s steps(5);
+        }
+
+
+        @keyframes demo{
+            0%{
+                background-position: 0px 0px;
+            }
+            100%{
+                background-position: 0px -6144px;
+            }
+        }
+
+        @keyframes test{
+            0%{
+                background-position: 0px 0px;
+            }
+
+            100%{
+                background-position: -2400px 0px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="fight">
+        <div class="demo"></div>
+        <div class="test"></div>
+    </div>
+</body>
+</html>

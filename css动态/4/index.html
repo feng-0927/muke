@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: lightblue;
+            overflow:hidden;
+        }
+
+        .fishbox{
+            width:200px;
+            height:200px;
+            position: absolute;
+            top:0;
+            left:0;
+            /* 鱼游动轨迹 */
+            animation:fish_active1 20s infinite linear;
+            animation-direction: normal;
+        }
+
+        @keyframes fish_active1{
+            0%{
+                top:0;
+                left:0;
+            }
+
+            15%{
+                transform:translate(600px,0px) rotate(45deg) ;
+            }
+
+            50%{
+                transform:translate(1000px,350px) rotate(135deg) ;
+            }
+
+            75%{
+                transform:translate(50px,300px) rotate(235deg);
+            }
+
+            100%{
+                transform:translate(0px,0px) rotate(360deg) ;
+            }
+        }
+
+        .fish{
+            /* 鱼自身的动画 */
+            width: 174px;
+            height: 126px;
+            position: absolute;
+            left:35%;
+            top:0;
+            background:url("./image/fish8.png") no-repeat left top;
+            animation:active1 .8s infinite steps(8);
+        }
+
+        @keyframes active1{
+            0%{
+                background-position: 0px 0px;
+            }
+            100%{
+                background-position: 0px -1008px;
+            }
+        }
+
+
+        .sharkbox{
+            width:509px;
+            height: 270px;
+            animation: run2 5s linear infinite;
+
+        }
+
+        @keyframes run2{
+                0%{
+                    transform:translateX(-600px);
+                }
+
+                100%{
+                    transform:translateX(2000px);
+                }
+        }
+
+
+        .shark{
+            /* 鱼的自身运动 */
+            width: 509px;
+            height: 270px;
+            background-image:url('./image/shark1.png');
+            background-repeat: no-repeat;
+            animation:active2 1s infinite steps(8);
+        }
+
+        @keyframes active2{
+            0%{
+                background-position: 0px 0px;
+            }
+            100%{
+                background-position: 0px -2160px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="fishbox">
+        <div class="fish"></div>
+    </div>
+    <div class="sharkbox">
+        <div class="shark"></div>
+    </div>
+</body>
+</html>
